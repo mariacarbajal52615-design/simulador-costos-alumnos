@@ -1,6 +1,4 @@
-Python
 import streamlit as st
-
 st.set_page_config(page_title="Simulador de Costos", layout="centered")
 
 st.title("🌽 Empacadora de Chiles")
