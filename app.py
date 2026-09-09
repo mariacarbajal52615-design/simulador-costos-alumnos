@@ -40,4 +40,23 @@ c3.metric("Total Pasivo (+16% IVA)", f"${total_pasivo:,.2f}")
 st.write("---")
 st.subheader("Póliza de Diario Generada")
 
-poliza_texto = f"""
+linea_separador = "=" * 85
+linea_sub = "-" * 85
+
+poliza_lineas = [
+    linea_separador,
+    "PÓLIZA DE DIARIO | Tipo: Diario | Ref: PROV-EMP-SIM",
+    linea_sub,
+    f"{'Código':<8} {'Nombre de la Cuenta':<45} {'Debe (Cargo)':>15} {'Haber (Abono)':>15}",
+    linea_sub,
+    f"5201     Costos Indirectos de Fabricación (CIF)       ${costo_total:>13,.2f}",
+    f"         * Variable ({cajas:,} cajas @ ${cv_unit:,.2f}): ${cv_total:>11,.2f}",
+    f"         * Fijo mensual:                            ${cf:>11,.2f}",
+    f"1109     IVA Pendiente de Acreditar                   ${iva:>13,.2f}",
+    f"2101     Proveedores Nacionales                                       ${total_pasivo:>13,.2f}",
+    linea_sub,
+    f"{'SUMAS IGUALES:':<54} ${total_pasivo:>13,.2f} ${total_pasivo:>13,.2f}",
+    linea_separador
+]
+
+st.code("\n".join(poliza_lineas), language="text")
